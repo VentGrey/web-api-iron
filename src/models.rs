@@ -2,6 +2,7 @@ use chrono::datetime::DateTime;
 use chrono::offset::utc::UTC;
 use uuid::Uuid;
 
+#[derive(Clone, Debug, RustcEncodable, RustcDecodable)]
 pub struct Post {
     title: String,
     body: String,
