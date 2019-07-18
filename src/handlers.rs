@@ -69,3 +69,10 @@ impl PostFeedHandler {
         PostFeedHandler { database }
     }
 }
+
+impl Handler for PostFeedHandler {
+    fn handle(&self, _: &mut Request) -> IronResult<Response> {
+        let payload = try_handler!(json::encode(lock!(self.database).posts()));
+        Ok(Response::with((status::Ok, payload)))
+    }
+}
