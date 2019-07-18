@@ -76,3 +76,13 @@ impl Handler for PostFeedHandler {
         Ok(Response::with((status::Ok, payload)))
     }
 }
+
+pub struct PostPostHandler {
+    database: Arc<Mutex<Database>>,
+}
+
+impl PostPostHandler {
+    fn new(database: Arc<Mutex<Database>>) -> PostPostHandler {
+        PostPostHandler { database }
+    }
+}
