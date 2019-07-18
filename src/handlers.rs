@@ -9,3 +9,18 @@ use uuid::Uuid;
 use router::Router;
 use models::Post;
 use std::error::Error;
+
+macro_rules! try_handler {
+    ($e: expr) => {
+        match $e {
+            Ok(x) => x,
+            Err(e) => return Ok(Response::with(status::InternalServerError, e.description()))
+        }
+    };
+    ($e: expr, $error:expr) => {
+        match $e {
+            Ok(x) => x,
+            Err(e) => return Ok(Response::with(($error, e.description())))
+        }
+    }
+}
