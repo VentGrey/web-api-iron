@@ -24,4 +24,8 @@ impl Post {
             uuid,
         }
     }
+
+    pub fn uuid(&self) -> &Uuid {
+        &self.uuid
+    }
 }
