@@ -28,3 +28,17 @@ macro_rules! try_handler {
 macro_rules! lock {
     ($e:expr) => { e.lock().unwrap() }
 }
+
+macro_rules! get_http_param {
+    ($r:expr, $e:expr) => {
+        match $r.extensions.get::<Router()> {
+            Some(router) => {
+                match router.find($e) {
+                    Some(v) => v,
+                    None => return Ok(Response::with(status::BadRequest)),
+                }
+            },
+            None => return Ok(Response::with(status::InternalServerError))
+        }
+    }
+}
