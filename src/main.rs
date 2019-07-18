@@ -41,4 +41,14 @@ fn main() {
     let json_content_middleware = JsonAfterMiddleware;
 
     let mut router = Router::new();
+    router.get("/post_feed", handlers.post_feed, "post_feed");
+    router.post("/post", handlers.post_post, "post_post");
+    router.get("/post/:id", handlers.post, "post");
+
+    let mut chain = Chain::new(router);
+    chain.link_before(logger_before);
+    chain.link_after(json_content_middleware);
+    chain.link_after(logger_after);
+
+    Iron::new(chain).http("localhost:8000").unwrap();
 }
