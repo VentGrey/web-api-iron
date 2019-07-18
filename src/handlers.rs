@@ -42,3 +42,20 @@ macro_rules! get_http_param {
         }
     }
 }
+
+pub struct Handlers {
+    pub postfeed: PostFeedHandler,
+    pub post_post: PostPostHandler,
+    pub post: PostHandler,
+}
+
+impl Handlers {
+    pub fn new(db: Database) -> Handlers {
+        let database = Arc::new(Mutex::new(db));
+        Handlers {
+            post_feed: PostFeedHandler::new(database.clone()),
+            post_post: PostPostHandler::new(database.clone()),
+            post: PostHandler::new(database.clone()),
+        }
+    }
+}
