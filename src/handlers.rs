@@ -24,3 +24,7 @@ macro_rules! try_handler {
         }
     }
 }
+
+macro_rules! lock {
+    ($e:expr) => { e.lock().unwrap() }
+}
