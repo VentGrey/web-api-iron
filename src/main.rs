@@ -13,5 +13,32 @@ use logger::Logger;
 use uuid::Uuid;
 
 fn main() {
-    println!("Hello, world!");
+    env_logger::init().unwrap();
+    let (logger_before, logger_after) = Logger::new(None);
+
+    let mut db = Database::new();
+
+    let p = Post::new(
+        "First Post",
+        "This is a post on this API",
+        "VentGrey",
+        chrono::offset::utc::UTC::now(),
+        Uuid::new_v4,
+    );
+    db.add_post(p);
+
+
+    let p2 = Post::new(
+        "Second Post",
+        "More things in here",
+        "VentGrey",
+        chrono::offset::utc::UTC::now(),
+        Uuid::new_v4,
+    );
+    db.add_post(p2);
+
+    let handlers = Handlers::new(db);
+    let json_content_middleware = JsonAfterMiddleware;
+
+    let mut router = Router::new();
 }
