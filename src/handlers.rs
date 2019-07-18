@@ -31,7 +31,7 @@ macro_rules! lock {
 
 macro_rules! get_http_param {
     ($r:expr, $e:expr) => {
-        match $r.extensions.get::<Router()> {
+        match $r.extensions.get::<Router>() {
             Some(router) => {
                 match router.find($e) {
                     Some(v) => v,
@@ -44,7 +44,7 @@ macro_rules! get_http_param {
 }
 
 pub struct Handlers {
-    pub postfeed: PostFeedHandler,
+    pub post_feed: PostFeedHandler,
     pub post_post: PostPostHandler,
     pub post: PostHandler,
 }

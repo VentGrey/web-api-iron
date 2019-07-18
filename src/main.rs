@@ -2,7 +2,7 @@ mod models;
 mod database;
 mod handlers;
 
-use model::*;
+use models::*;
 use database::Database;
 use handlers::*;
 
@@ -23,7 +23,7 @@ fn main() {
         "This is a post on this API",
         "VentGrey",
         chrono::offset::utc::UTC::now(),
-        Uuid::new_v4,
+        Uuid::new_v4(),
     );
     db.add_post(p);
 
@@ -33,7 +33,7 @@ fn main() {
         "More things in here",
         "VentGrey",
         chrono::offset::utc::UTC::now(),
-        Uuid::new_v4,
+        Uuid::new_v4(),
     );
     db.add_post(p2);
 
