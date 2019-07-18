@@ -13,4 +13,8 @@ impl Database {
     pub fn add_post(&mut self, post: Post) {
         self.posts.push(post);
     }
+
+    pub fn posts(&self) -> &Vec<Post> {
+        &self.posts
+    }
 }
