@@ -59,3 +59,13 @@ impl Handlers {
         }
     }
 }
+
+pub struct PostFeedHandler {
+    database: Arc<Mutex<Database>>,
+}
+
+impl PostFeedHandler {
+    fn new(database: Arc<Mutex<Database>>) -> PostFeedHandler {
+        PostFeedHandler { database }
+    }
+}
