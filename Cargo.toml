@@ -12,5 +12,5 @@ router = "0.5"
 logger = "0.2"
 env_logger = "0.3"
 rustc-serialize = "0.3"
-chrono = { version = "0.2", features = ["rustc-serialize"] }
+chrono = { version = "0.4", features = ["rustc-serialize"] }
 uuid = { version = "0.2", features = ["v4", "rustc-serialize"] }
