@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 iron = "0.5"
 router = "0.6"
-logger = "0.2"
+logger = "0.4"
 env_logger = "0.8"
 rustc-serialize = "0.3"
 chrono = { version = "0.2", features = ["rustc-serialize"] }
